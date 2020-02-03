@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/chooseLanguageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/choose_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/hint_choose_language"
+            android:textAppearance="@style/TextTitleStyle" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/tv_languageFrom"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height_standard"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:gravity="end|center_vertical"
+        android:paddingStart="@dimen/padding"
+        android:paddingLeft="@dimen/padding"
+        android:paddingEnd="@dimen/padding"
+        android:paddingRight="@dimen/padding"
+        android:textColor="@color/black"
+        android:textSize="@dimen/item_text_size_normal"
+        app:layout_constraintEnd_toStartOf="@+id/ib_switch_direction"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chooseLanguageLayout"
+        tools:text="Русский" />
+
+    <ImageButton
+        android:id="@+id/ib_switch_direction"
+        android:layout_width="@dimen/item_height_standard"
+        android:layout_height="@dimen/item_height_standard"
+        android:background="@color/colorPrimary"
+        android:contentDescription="@string/ib_switch_direction"
+        app:layout_constraintEnd_toStartOf="@+id/tv_languageTo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tv_languageFrom"
+        app:layout_constraintTop_toBottomOf="@id/chooseLanguageLayout"
+        app:srcCompat="@drawable/ic_change_arrows_black_24dp" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/tv_languageTo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/item_height_standard"
+        android:layout_gravity="end"
+        android:layout_weight="1"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/padding"
+        android:paddingLeft="@dimen/padding"
+        android:paddingEnd="@dimen/padding"
+        android:paddingRight="@dimen/padding"
+        android:textColor="@color/black"
+        android:textSize="@dimen/item_text_size_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ib_switch_direction"
+        app:layout_constraintTop_toBottomOf="@id/chooseLanguageLayout"
+        tools:text="Английский" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_languageFrom">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/enter_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_enter_word"
+            android:imeOptions="actionSend"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Results area -->
+    <TextView
+        android:id="@+id/translated_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_cell"
+        android:ems="10"
+        android:textAppearance="@style/Text.H1"
+        app:layout_constraintBottom_toBottomOf="@+id/add_to_history_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_to_history_button" />
+
+    <ImageButton
+        android:id="@+id/add_to_history_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/add_to_history_button_content"
+        android:src="@drawable/ic_add"
+        android:text="@string/add_to_history_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/translated_text"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <!-- History area -->
+    <TextView
+        android:id="@+id/translation_history_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/history_title"
+        android:textAppearance="@style/TextTitleStyle"
+        app:layout_constraintTop_toBottomOf="@+id/add_to_history_button" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/translation_history_title" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/recycler"
+        app:layout_constraintTop_toBottomOf="@+id/translation_history_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

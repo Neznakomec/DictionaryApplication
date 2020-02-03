@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Diary</string>
+    <string name="action_unload">[Developer] Send DB to sdcard</string>
+    <string name="action_search">Search</string>
+    <string name="action_favourites">Избранное</string>
+    <string name="hint_enter_word">Введите слово</string>
+    <string name="hint_choose_language">Выберите язык</string>
+    <string name="hint_favourites">Избранное</string>
+    <string name="history_title">История переводов</string>
+    <string name="ib_switch_direction">Поменять направление</string>
+    <string name="btn_savedb">Сохранить базу</string>
+    <string name="invalid_information">Нет информации</string>
+    <string name="add_to_history_button">V</string>
+    <string name="add_to_history_button_content">Добавить перевод в словарь</string>
+    <string name="translationError" formatted="false">Произошла ошибка - %s\nПожалуйста, попробуйте ещё раз</string>
+    <string name="no_translated_text">Нет переведённого текста</string>
+
+</resources>
